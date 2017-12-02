@@ -1,6 +1,7 @@
-from logipy import logi_led
+"""This cycles fast between random colors and has an RGB intro :P"""
 import time
-from random import *
+from random import random
+from logipy import logi_led
 
 logi_led.logi_led_init()
 time.sleep(2)
@@ -18,21 +19,7 @@ while True:
     r = int(random() * 100)
     g = int(random() * 100)
     b = int(random() * 100)
-    #time.sleep(3)
     logi_led.logi_led_set_lighting(r, g, b)
     time.sleep(0.2)
-#    if(yolo == 0):
-#        logi_led.logi_led_set_lighting(100, 0, 0)
-#        yolo = 1
-#    elif(yolo == 1):
-#        logi_led.logi_led_set_lighting(0, 100, 0)
-#        yolo = 2
-#    else:
-#        logi_led.logi_led_set_lighting(0, 0, 100)
-#        yolo = 0
-#    time.sleep(0.5)
-#    logi_led.logi_led_set_lighting(r, g, b)
-
-#time.sleep(10)
 
 logi_led.logi_led_shutdown()

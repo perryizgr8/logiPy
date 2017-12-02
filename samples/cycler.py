@@ -1,6 +1,7 @@
-from logipy import logi_led
+"""Random colors with smooth transition and a pulse before every change."""
 import time
-from random import *
+from random import random
+from logipy import logi_led
 
 logi_led.logi_led_init()
 time.sleep(1)
@@ -9,41 +10,33 @@ r = g = b = 0
 logi_led.logi_led_set_lighting(r, g, b)
 time.sleep(5)
 
-def transition(r, g, b, new_r, new_g, new_b):
-    while ((r != new_r) or (g != new_g) or (b != new_b)):
-        while (r != new_r):
-            if (r > new_r):
-                r = r - 1
+def transition(red, green, blue, new_red, new_green, new_blue):
+    """This smoothly transitions from one color to another."""
+    while (red != new_red) or (green != new_green) or (blue != new_blue):
+        while red != new_red:
+            if red > new_red:
+                red = red - 1
                 break
             else:
-                r = r + 1
+                red = red + 1
                 break
-            #logi_led.logi_led_set_lighting(r, g, b)
-            #time.sleep(0.01)
-    
-        while (g != new_g):
-            if (g > new_g):
-                g = g - 1
+        while green != new_green:
+            if green > new_green:
+                green = green - 1
                 break
             else:
-                g = g + 1
+                green = green + 1
                 break
-            #logi_led.logi_led_set_lighting(r, g, b)
-            #time.sleep(0.01)
-        
-        while (b != new_b):
-            if (b > new_b):
-                b = b - 1
+        while blue != new_blue:
+            if blue > new_blue:
+                blue = blue - 1
                 break
             else:
-                b = b + 1
+                blue = blue + 1
                 break
-            #logi_led.logi_led_set_lighting(r, g, b)
-            #time.sleep(0.01)
-        logi_led.logi_led_set_lighting(r, g, b)
+        logi_led.logi_led_set_lighting(red, green, blue)
         time.sleep(0.01)
 
-yolo = 0
 while True:
     new_r = int(random() * 100)
     new_g = int(random() * 100)
@@ -55,18 +48,5 @@ while True:
     time.sleep(3)
     logi_led.logi_led_set_lighting(100 - r, 100 - g, 100 -b)
     time.sleep(0.1)
-#    if(yolo == 0):
-#        logi_led.logi_led_set_lighting(100, 0, 0)
-#        yolo = 1
-#    elif(yolo == 1):
-#        logi_led.logi_led_set_lighting(0, 100, 0)
-#        yolo = 2
-#    else:
-#        logi_led.logi_led_set_lighting(0, 0, 100)
-#        yolo = 0
-#    time.sleep(0.5)
-#    logi_led.logi_led_set_lighting(r, g, b)
-
-#time.sleep(10)
 
 logi_led.logi_led_shutdown()
