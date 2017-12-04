@@ -20,6 +20,8 @@ while True:
     g = int(random() * 100)
     b = int(random() * 100)
     logi_led.logi_led_set_lighting(r, g, b)
-    time.sleep(0.2)
+    time.sleep(1)
+    logi_led.logi_led_set_lighting(100-r, 100-g, 100-b)
+    time.sleep(0.5)
 
 logi_led.logi_led_shutdown()
